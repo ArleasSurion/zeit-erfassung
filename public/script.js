@@ -50,10 +50,22 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             body: JSON.stringify(timeEntry)
         })
-        .then(response => response.json())
-        .then(data => console.log('Zeiterfassungsdaten gespeichert:', data))
-        .catch(error => console.error('Fehler beim Speichern:', error));
+        .then(response => {
+            // Überprüfen, ob die Antwort OK ist
+            if (!response.ok) {
+                throw new Error('Fehler beim Speichern der Zeiterfassungsdaten: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Zeiterfassungsdaten gespeichert:', data);
+        })
+        .catch(error => {
+            console.error('Fehler beim Speichern:', error);
+            // Hier könntest du eine Fehlermeldung im UI anzeigen
+        });
     }
+    
     
     function displayTimeEntries() {
         fetch('/get-time')
