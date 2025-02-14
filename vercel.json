@@ -14,7 +14,15 @@
         {
           "src": "/(.*)",
           "dest": "/public/$1"
+        },
+        {
+        "src": "/api/save-time",
+        "dest": "/api/save-time.js"
+        },
+        {
+        "src": "/api/get-time",
+        "dest": "/api/get-time.js"
         }
-    ]    
+    ]
   }
   
