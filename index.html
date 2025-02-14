@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeiterfassung</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Zeiterfassung</h1>
+    <form id="arbeitszeit-form">
+      <label for="startzeit">Startzeit:</label>
+      <input type="time" id="startzeit" name="startzeit" required>
+
+      <label for="endzeit">Endzeit:</label>
+      <input type="time" id="endzeit" name="endzeit" required>
+
+      <button type="submit">Speichern</button>
+    </form>
+
+    <div id="zeiten-anzeige">
+      <h3>Gespeicherte Arbeitszeiten:</h3>
+      <ul id="arbeitszeiten-liste"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
