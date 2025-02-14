@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeiterfassung</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Zeiterfassung</h1>
+
+        <div class="time-entry">
+            <label for="start-time">Startzeit:</label>
+            <input type="time" id="start-time" required>
+        </div>
+
+        <div class="time-entry">
+            <label for="end-time">Endzeit:</label>
+            <input type="time" id="end-time" required>
+        </div>
+
+        <div class="time-entry">
+            <label for="break-duration">Pausenzeit (in Minuten):</label>
+            <input type="number" id="break-duration" placeholder="z.B. 30">
+        </div>
+
+        <button id="submit-btn">Zeiterfassung speichern</button>
+
+        <h2>Gesamtarbeitszeit:</h2>
+        <p id="total-time">0 Stunden</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
