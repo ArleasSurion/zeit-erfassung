@@ -29,22 +29,6 @@ document.getElementById("submit-btn").addEventListener("click", function() {
         alert("Bitte Datum, Start- und Endzeit eingeben.");
     }
 
-    function displayTimeEntries() {
-        fetch('/get-time')
-            .then(response => response.json())
-            .then(data => {
-                const timeEntriesList = document.getElementById("time-entries-list");
-                let html = "<ul>";
-                data.forEach(entry => {
-                    html += `<li>${entry.date} - ${entry.totalHours} Stunden und ${entry.remainingMinutes} Minuten</li>`;
-                });
-                html += "</ul>";
-                timeEntriesList.innerHTML = html;
-            })
-            .catch(error => console.error('Fehler beim Laden der Daten:', error));
-    }
-    
-    document.addEventListener("DOMContentLoaded", displayTimeEntries);
     
 });
 
@@ -70,3 +54,20 @@ function saveTimeEntry(date, startTime, endTime, breakDuration, totalHoursDecima
     .then(data => console.log('Zeiterfassungsdaten gespeichert:', data))
     .catch(error => console.error('Fehler beim Speichern:', error));
 }
+
+function displayTimeEntries() {
+    fetch('/get-time')
+        .then(response => response.json())
+        .then(data => {
+            const timeEntriesList = document.getElementById("time-entries-list");
+            let html = "<ul>";
+            data.forEach(entry => {
+                html += `<li>${entry.date} - ${entry.totalHours} Stunden und ${entry.remainingMinutes} Minuten</li>`;
+            });
+            html += "</ul>";
+            timeEntriesList.innerHTML = html;
+        })
+        .catch(error => console.error('Fehler beim Laden der Daten:', error));
+}
+
+document.addEventListener("DOMContentLoaded", displayTimeEntries);
