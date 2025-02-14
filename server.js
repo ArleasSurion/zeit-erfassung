@@ -1,44 +1,14 @@
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'public'))); // Statische Dateien (HTML, CSS, JS)
+// Stelle statische Dateien aus dem public-Ordner bereit
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.json());
-
-// Endpunkt zum Speichern der Zeiterfassungsdaten
-app.post('/save-time', (req, res) => {
-    const timeEntry = req.body;
-
-    fs.readFile('timeEntries.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).send('Fehler beim Laden der Datei');
-        }
-
-        let timeEntries = JSON.parse(data);
-        timeEntries.push(timeEntry);
-
-        fs.writeFile('timeEntries.json', JSON.stringify(timeEntries, null, 2), (err) => {
-            if (err) {
-                return res.status(500).send('Fehler beim Speichern der Datei');
-            }
-
-            res.status(200).send('Zeiterfassungsdaten erfolgreich gespeichert');
-        });
-    });
-});
-
-// Endpunkt zum Abrufen der Zeiterfassungsdaten
-app.get('/get-time', (req, res) => {
-    fs.readFile('timeEntries.json', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).send('Fehler beim Laden der Datei');
-        }
-
-        res.json(JSON.parse(data));
-    });
+// Route für die index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
