@@ -10,7 +10,7 @@
         "dest": "/api/save-time.js"
       },
       {
-        "src": "/api/(.*)",
+        "src": "/api/get-time",
         "dest": "/api/get-time.js"
       },
       {
