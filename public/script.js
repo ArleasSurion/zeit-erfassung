@@ -43,20 +43,15 @@ document.addEventListener("DOMContentLoaded", function() {
             remainingMinutes: remainingMinutes
         };
     
-        fetch('/save-time', {
+        // Verwende den vollständigen Pfad zum API-Endpunkt
+        fetch('https://zeit-erfassung.vercel.app/api/save-time', {  // Direkter Verweis auf die API
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(timeEntry)
         })
-        .then(response => {
-            // Überprüfen, ob die Antwort OK ist
-            if (!response.ok) {
-                throw new Error('Fehler beim Speichern der Zeiterfassungsdaten: ' + response.statusText);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             console.log('Zeiterfassungsdaten gespeichert:', data);
         })
@@ -65,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // Hier könntest du eine Fehlermeldung im UI anzeigen
         });
     }
-    
+        
     
     function displayTimeEntries() {
-        fetch('/get-time')
+        fetch('https://zeit-erfassung.vercel.app/api/get-time')
             .then(response => {
                 // Überprüfe, ob die Antwort erfolgreich war
                 if (!response.ok) {
