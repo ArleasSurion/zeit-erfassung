@@ -2,26 +2,26 @@
     "version": 2,
     "builds": [
       {
-        "src": "public/**/*",
+        "source": "public/**/*",
         "use": "@vercel/static"
       },
       {
-        "src": "api/**/*.js",
+        "source": "api/**/*.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
         {
-          "src": "/(.*)",
-          "dest": "/public/$1"
+          "source": "/(.*)",
+          "destination": "/public/$1"
         },
         {
-        "src": "/api/save-time",
-        "dest": "/api/save-time.js"
+        "source": "/api/save-time",
+        "destination": "/api/save-time.js"
         },
         {
-        "src": "/api/get-time",
-        "dest": "/api/get-time.js"
+        "source": "/api/get-time",
+        "destination": "/api/get-time.js"
         }
     ]
   }
