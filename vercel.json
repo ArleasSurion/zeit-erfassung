@@ -2,12 +2,22 @@
     "version": 2,
     "functions": {
       "api/save-time.js": {
-        "runtime": "nodejs14.x"
+        "runtime": "nodejs14.x",
+        "memory": 1024,
+        "maxDuration": 30
       },
       "api/get-time.js": {
-        "runtime": "nodejs14.x"
+        "runtime": "nodejs14.x",
+        "memory": 1024,
+        "maxDuration": 30
       }
     },
+    "builds": [
+      {
+        "src": "public/**/*",
+        "use": "@vercel/static"
+      }
+    ],
     "routes": [
       {
         "src": "/api/save-time",
