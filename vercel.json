@@ -26,10 +26,6 @@
       {
         "src": "/api/get-time",
         "dest": "/api/get-time.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/public/$1"
       }
     ]
   }
