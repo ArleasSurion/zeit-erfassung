@@ -1,28 +1,9 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "source": "public/**/*",
-        "use": "@vercel/static"
-      },
-      {
-        "source": "api/**/*.js",
-        "use": "@vercel/node"
+    "functions": {
+      "api/**/*.js": {
+        "runtime": "nodejs14.x"
       }
-    ],
-    "routes": [
-        {
-          "source": "/(.*)",
-          "destination": "/public/$1"
-        },
-        {
-        "source": "/api/save-time",
-        "destination": "/api/save-time.js"
-        },
-        {
-        "source": "/api/get-time",
-        "destination": "/api/get-time.js"
-        }
-    ]
+    }
   }
   
