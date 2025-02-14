@@ -6,7 +6,7 @@
     ],
     "routes": [
       {
-        "src": "/api/(.*)",
+        "src": "/api/save-time",
         "dest": "/api/save-time.js"
       },
       {
